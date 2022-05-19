@@ -8,12 +8,11 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
 @Table(name="app_user")
-@Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Getter
 @Setter
 @Builder
@@ -34,8 +33,8 @@ public class AppUser {
     @Column(name = "USERNAME", unique = true, nullable = false)
     private String username;
 
-    @JsonIgnore
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @Lob
@@ -52,6 +51,17 @@ public class AppUser {
     @OneToMany(mappedBy = "user")
     Set<Purchase> purchases;
 
-//    @Column(name = "ROLE")
-//    private Integer role;
+    @Column
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"
+            )
+    )
+    private Collection<Role> roles;
 }
