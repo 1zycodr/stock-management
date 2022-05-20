@@ -9,5 +9,6 @@ public interface AppUserRepository {
     AppUser findById(Long id);
     AppUser findUserByUsername(String username);
     void save(AppUser user);
-//    AppUser createUser(AppUser user);
+    void update(AppUser user);
+    void delete(AppUser user);
 }

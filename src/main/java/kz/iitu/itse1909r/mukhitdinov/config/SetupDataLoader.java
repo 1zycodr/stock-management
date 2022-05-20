@@ -41,6 +41,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         Privilege readPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");

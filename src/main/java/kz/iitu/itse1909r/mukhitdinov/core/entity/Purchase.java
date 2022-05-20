@@ -1,5 +1,6 @@
 package kz.iitu.itse1909r.mukhitdinov.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.ColumnDefault;
@@ -45,8 +46,12 @@ public class Purchase {
     private String type;
 
     @ManyToOne
-    @JoinColumn(name = "purchase_id")
+    @JoinColumn(name = "user_id")
     AppUser user;
+
+    @ManyToOne
+    @JoinColumn(name = "stock_id")
+    Stock stock;
 
     @OneToMany(mappedBy = "purchase")
     Set<PurchaseProducts> products;

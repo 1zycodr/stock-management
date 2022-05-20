@@ -20,11 +20,13 @@ public class RoleRepositoryImpl implements RoleRepository {
 
     @Override
     public List<Role> findAll() {
+//        return null;
         return sessionFactory.getCurrentSession().createQuery("from Role").list();
     }
 
     @Override
     public Role findByName(String name) {
+//        return null;
         return (Role) sessionFactory.getCurrentSession()
                 .createQuery("from Role where name=:name")
                 .setParameter("name", name)

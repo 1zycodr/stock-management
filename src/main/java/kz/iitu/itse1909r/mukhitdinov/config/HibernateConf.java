@@ -55,11 +55,4 @@ public class HibernateConf {
         sessionFactoryBean.afterPropertiesSet();
         return sessionFactoryBean.getObject();
     }
-
-//    @Bean
-//    public PlatformTransactionManager transactionManager() throws IOException {
-//        return new HibernateTransactionManager(sessionFactory());
-//    }
-
-
 }

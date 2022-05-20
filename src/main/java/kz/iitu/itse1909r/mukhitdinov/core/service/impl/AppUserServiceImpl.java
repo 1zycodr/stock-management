@@ -1,6 +1,7 @@
 package kz.iitu.itse1909r.mukhitdinov.core.service.impl;
 
-import kz.iitu.itse1909r.mukhitdinov.core.controller.models.UserCreateRequestModel;
+import kz.iitu.itse1909r.mukhitdinov.core.controller.models.user.UserCreateRequestModel;
+import kz.iitu.itse1909r.mukhitdinov.core.controller.models.user.UserUpdateRequestModel;
 import kz.iitu.itse1909r.mukhitdinov.core.entity.AppUser;
 import kz.iitu.itse1909r.mukhitdinov.core.repository.AppUserRepository;
 import kz.iitu.itse1909r.mukhitdinov.core.service.AppUserService;
@@ -54,5 +55,35 @@ public class AppUserServiceImpl implements AppUserService {
         } else {
             throw new RuntimeException("User already exists");
         }
+    }
+
+    @Override
+    public AppUser getById(Long id) {
+        AppUser user = userRepository.findById(id);
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+        return user;
+    }
+
+    @Override
+    public AppUser updateUser(Long id, UserUpdateRequestModel user) {
+        AppUser updateUser = getById(id);
+        if (updateUser == null) {
+            throw new RuntimeException("User not found");
+        }
+        updateUser.setFirstName(user.getFirstName());
+        updateUser.setLastName(user.getLastName());
+        userRepository.update(updateUser);
+        return updateUser;
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        AppUser user = getById(id);
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+        userRepository.delete(user);
     }
 }

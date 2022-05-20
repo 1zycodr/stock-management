@@ -17,6 +17,7 @@ public class PrivilegeRepositoryImpl implements PrivilegeRepository {
 
     @Override
     public Privilege findPrivilegeByName(String name) {
+//        return null;
         return (Privilege) sessionFactory.getCurrentSession()
                 .createQuery("from Privilege where name=:name")
                 .setParameter("name", name)

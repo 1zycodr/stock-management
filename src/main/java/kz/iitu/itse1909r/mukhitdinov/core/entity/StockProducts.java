@@ -1,5 +1,7 @@
 package kz.iitu.itse1909r.mukhitdinov.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -27,10 +29,12 @@ public class StockProducts {
     @Column(name = "QUANTITY", nullable = false)
     private Long quantity;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "product_id")
     Product product;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "stock_id")
     Stock stock;

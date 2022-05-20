@@ -1,5 +1,7 @@
 package kz.iitu.itse1909r.mukhitdinov.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -34,9 +36,11 @@ public class Product {
     @Column(name = "PRICE", nullable = false)
     private Integer price;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product")
     Set<StockProducts> stocks;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product")
     Set<PurchaseProducts> purchases;
 }

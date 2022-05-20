@@ -1,5 +1,7 @@
 package kz.iitu.itse1909r.mukhitdinov.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,6 +34,7 @@ public class Stock {
     @OneToMany(mappedBy = "stock")
     Set<StockProducts> products;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "stock")
     Set<PurchaseProducts> purchases;
 }

@@ -1,6 +1,7 @@
 package kz.iitu.itse1909r.mukhitdinov.core.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -37,17 +38,21 @@ public class AppUser {
     @JsonIgnore
     private String password;
 
-    @Lob
     @Column(name = "FIRST_NAME")
-    private String first_name;
+    private String firstName;
 
-    @Transient
     @Column(name = "LAST_NAME")
-    private String last_name;
+    private String lastName;
 
     @Version
     private Long version;
 
+    @Transient
+    @Lob
+    @Column
+    private Long userUUID;
+
+    @JsonBackReference
     @OneToMany(mappedBy = "user")
     Set<Purchase> purchases;
 
