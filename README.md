@@ -19,3 +19,8 @@ You should set up jwt authorization in postman after collection import
 
 Starting project:
 docker-compose up -d
+
+Database:
+variant2_Mukhitdinov.tar
+User: pguser
+Password: Fks#23pq17
