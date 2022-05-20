@@ -13,3 +13,9 @@ This system allows us to control purchase status from payment to delivery.
 Endpoints:
 
 ![img.png](img.png)
+
+Default credentials: admin, admin
+You should set up jwt authorization in postman after collection import
+
+Starting project:
+docker-compose up -d
