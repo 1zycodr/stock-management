@@ -743,7 +743,7 @@
 			]
 		},
 		{
-			"name": "Stock Copy",
+			"name": "Purchase",
 			"item": [
 				{
 					"name": "/api/purchase",
