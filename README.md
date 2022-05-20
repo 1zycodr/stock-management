@@ -12,7 +12,7 @@ This system allows us to control purchase status from payment to delivery.
 
 Endpoints:
 
-![img.png](img.png)
+![img_1.png](img_1.png)
 
 Default credentials: admin, admin
 You should set up jwt authorization in postman after collection import
